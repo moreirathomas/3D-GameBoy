@@ -1,0 +1,249 @@
+/* Les selecteurs auraient pu être mieux regroupés et optimisés, notamment avec du scss mais je n'ai pas eu le temps */
+body{
+    overflow: hidden;
+    font-size: 10px;
+    color: #242484;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.perspective-wrapper{
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #222;
+    perspective: 1000px;
+    transform: scale(1.5); /* because to let to manually scale up the dimensions of the cube*/
+    transform-origin: center;
+}
+.gameboy{
+    width: 250px;
+    height: 450px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transform-style: preserve-3d;
+    transition: transform 2s ease;
+    transform-origin: center;
+    animation: rotate 10s infinite ease-in-out;
+}
+.face{
+    width: 200px;
+    height: 400px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 5px;
+}
+.face.back{
+    background: #a09f9c;
+    transform: translateZ(-25px);
+}
+.face.front{
+    background: #a09f9c;
+    transform: translateZ(25px);
+}
+.face.left{
+    width: 50px;
+    background: #a09f9c;
+    transform: rotateY(-90deg) translateZ(90px) translateZ(10px);
+}
+.face.right{
+    width: 50px;
+    background: #a09f9c;
+    transform: rotateY(90deg) translateZ(90px) translateZ(10px);
+}
+.face.top{
+    height: 50px;
+    background: #a09f9c;
+    transform: rotateX(90deg) translateZ(200px);
+}
+.face.bot{
+    height: 50px;
+    background: #a09f9c;
+    transform: rotateX(-90deg) translateZ(200px);
+}
+
+.screen{
+    position: absolute;
+    height: 175px;
+    width: 175px;
+    background: #3B4206;
+    border-left: 15px solid #5C5961;
+    border-right: 15px solid #5C5961;
+    border-top: 22.5px solid #5C5961;
+    border-bottom: 22.5px solid #5C5961;
+    border-radius: 5px;
+    left: 0;
+    right: 0;
+    top: -200px;
+    bottom: 0;
+    margin: auto;
+}
+
+.txt{
+    position: absolute;
+    left: 15px;
+    right: 0;
+    top: 195px;
+    bottom: 0;
+    margin: auto;
+    font-weight: 700;
+}
+.txt span:last-child{
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.arrows {
+    position: absolute;
+    left: -125px;
+    right: 0;
+    top: 155px;
+    bottom: 0;
+    margin: auto;
+    background: #222;
+}
+.arrows.vertical{
+    width: 12.5px;
+    height: 35px;
+}
+.arrows.horizontal{
+    width: 35px;
+    height: 12.5px;
+}
+
+.btns{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: #9C0A45;
+    border-radius: 50%;
+}
+.btns.btna{
+    left: 125px;
+    top: 135px;
+}
+.btns.btna::after{
+    content: 'A';
+    display: inline-block;
+    transform: rotateZ(-30deg) translateY(35px) translateX(5px);
+}
+.btns.btnb{
+    left: 55px;
+    top: 165px;
+}
+.btns.btnb::after{
+    content: 'B';
+    display: inline-block;
+    transform: rotateZ(-30deg) translateY(35px) translateX(5px);
+}
+
+
+.select, .start{
+    width: 25px;
+    height: 2.5px;
+    position: absolute;
+    right: 0;
+    top: 325px;
+    bottom: 0;
+    margin: auto;
+    background: #7C767B;
+    transform: rotateZ(-30deg);
+}
+.select{
+    left: -40px;
+}
+.select::after{
+    content: 'select';
+    display: inline-block;
+    transform: translateY(2.5px) translateX(2.5px);
+    text-transform: uppercase;
+    font-size: 5px;
+    font-weight: 700;
+}
+.start{
+    left: 40px;
+}
+.start::after{
+    content: 'start';
+    display: inline-block;
+    transform: translateY(2.5px) translateX(5px);
+    text-transform: uppercase;
+    font-size: 5px;
+    font-weight: 700;
+}
+
+.sound{
+    width: 25px;
+    height: 2.5px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: #222;
+    transform: rotateZ(50deg);
+    opacity: 0.75;
+}
+.sound.a{
+    top: 325px;
+    left: 155px;
+}
+.sound.b{
+    top: 335px;
+    left: 142.5px;
+}
+.sound.c{
+    top: 345px;
+    left: 130px;
+}
+.sound.d{
+    top: 355px;
+    left: 118.75px;
+}
+.on, .off{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0;
+    right: 0;
+    top: -200px;
+    bottom: 0;
+    margin: auto;
+    background: #222;
+}
+.off{
+    top: -150px;
+}
+.on:hover, .off:hover{
+    filter: brightness(2);
+}
+@keyframes rotate{
+    0%{
+        transfrom: rotateX(0deg) rotateY(0deg)
+    }
+    25%{
+        transform: rotateX(-30deg) rotateY(-30deg);
+    }
+    50%{
+        transfrom: rotateX(0deg) rotateY(0deg)
+    }
+    75%{
+        transform: rotateX(15deg) rotateY(10deg);
+    }
+    100%{
+        transfrom: rotateX(0deg) rotateY(0deg)
+    }
+}

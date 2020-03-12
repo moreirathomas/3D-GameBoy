@@ -1,0 +1,39 @@
+@import './variables';
+
+// functions
+@function width($face) {
+    @return map-get($widths, $face);
+}
+@function height($face) {
+    @return map-get($heights, $face);
+}
+
+//mixins
+@mixin position($top, $right, $bot, $left) {
+    top: $top;
+    left: $left;
+    bottom: $bot;
+    right: $right;
+}
+@mixin translateFace() {
+    
+}
+@mixin translateSide() {
+    
+}
+@mixin translateUp() {
+    
+}
+@mixin face($width, $height, $top, $right, $bot, $left, $translation, ) {
+    width: $width;
+    height: $height;
+    position: absolute;
+    @include position($top, $right, $bot, $left);
+    margin: auto;
+    border-radius: 5px;
+    @if ($translation == 'translateUp'){
+        @include translateFace()
+    }
+    @else if (){}
+    @else if (){}
+}
